@@ -1,0 +1,49 @@
+
+ ESSE BLOCO VAI EXECULTAR AS ALTERACOES EM SEQUENCIA => Animated.sequence
+ SE ALTERAR PARA PARALLEL VAI SER ECECULTADA AO MESMO TEMPO => Animated.parallel
+ 
+               Animated.parallel([
+                Animated.timing(larAnimada, {
+                    toValue:300,
+                    duration:2000,
+                    useNativeDriver:false
+                }),
+               Animated.timing(altAnimada, {
+                   toValue:200,
+                   duration:2000,
+                   useNativeDriver:false
+               }),
+            ]).start();
+
+
+
+    //  Animacoes em loop
+        Animated.loop(
+            Animated.sequence([
+
+                Animated.timing(opacidadeAnimada, {
+                    toValue:1,
+                    duration:1000,
+                    useNativeDriver:false
+                }),
+                Animated.parallel([
+                    Animated.timing(larAnimada,{
+                        toValue:300,
+                        duration:2000,
+                        useNativeDriver:false
+                    }),
+                    Animated.timing(altAnimada,{
+                        toValue:300,
+                        duration:2000,
+                        useNativeDriver:false
+                    })
+                ]),
+                Animated.timing(opacidadeAnimada, {
+                    toValue:0,
+                    duration:1000,
+                    useNativeDriver:false
+                }),
+            ])
+            
+        ).start();
+       
